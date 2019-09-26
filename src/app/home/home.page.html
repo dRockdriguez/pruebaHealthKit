@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Prueba HealthKit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <ion-item>
+        <ion-label stacked>
+          Introduce tu peso
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="weight" placeholder="Peso en kg"> 
+        </ion-input>
+      </ion-item>
+      <ion-button color="primary" expand="full" (click)="guardarPeso()">Guardar peso</ion-button>
+      <ion-item>
+        <ion-label stacked>
+          Peso
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="weightActual" readonly> 
+        </ion-input>
+      </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      Introduce tu Altura
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="height" placeholder="Altura en cm"> 
+    </ion-input>
+  </ion-item>
+  <ion-button color="secondary" expand="full" (click)="guardaAltura()">Guardar altura</ion-button>
+  <ion-item>
+    <ion-label stacked>
+      Altura
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="heightActual" readonly> 
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      Introduce Pasos
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="pasos"> 
+    </ion-input>
+  </ion-item>
+  <ion-button color="success" expand="full" (click)="guardaPasos()">Guardar Pasos</ion-button>
+  <ion-item>
+    <ion-label stacked>
+      Pasos en las últimas 24h
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="steps" readonly> 
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>
+      Introduce Distancia silla
+    </ion-label>
+    <ion-input type="text" [(ngModel)]="silla" placeholder="En km"> 
+    </ion-input>
+  </ion-item>
+  <ion-button color="warning" expand="full" (click)="guardaDistanciaSillaRuedas()">Guardar Silla Ruedas</ion-button>
+  <ion-item>
+    <ion-textarea autoGrow="true" readonly value="Distancia recorrida en las últimas 24h como el Langui">
+    </ion-textarea>
+    <ion-input type="text" [(ngModel)]="distancia" readonly> 
+    </ion-input>
+  </ion-item>
+
+
+  <ion-button color="tertiary" expand="full" (click)="guardaWorkout()">Genera Workout</ion-button>
+  
+
+
+  <h2>Entrenamientos inventaos</h2>
+  <ion-list>
+    <ion-card *ngFor="let workout of workouts">
+      <ion-card-header>
+       {{ workout.calories }} 
+      </ion-card-header>
+      <ion-card-content>
+        <p>Actividad: {{ workout.activityType }}</p>
+        <p>Duracion: {{ workout.duration / 60 }} min</p>
+        <p>Fecha: {{ workout.startDate | date: 'short' }}</p>
+        <p>Distancia: {{ workout.miles / 0.62137 }} Kms</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
